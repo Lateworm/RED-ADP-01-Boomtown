@@ -10,10 +10,27 @@ cd client && npm install
 
 ## Start-up
 
-From inside the `client` directory, run:
+In the `client` directory, run:
 
 ```bash
-npm run dev
+npm start
+```
+
+and from inside the `server` directory:
+
+```bash
+json-server --watch db.json -p 4000
 ```
 
 Happy coding :)
+
+## To-do
+
+do PropTypes all over the place
+get filter working
+Make the footer and call it in Layout.js
+figure out turntable unavailability
+Simplify the not found container by removing the unused file and moving it to components
+avoid over-fetching / use query strings
+link the B logo to the homepage
+rename items to users in redux/modules/profile.js

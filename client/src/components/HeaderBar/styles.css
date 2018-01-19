@@ -1,0 +1,14 @@
+.navbar {
+  background-color: #fff !important;
+  width: 100% !important;
+  height: 64px;
+}
+
+.navbar-logout-button,
+.navbar-filter {
+  margin-left: 1rem;
+}
+
+.navbar-logo {
+  height: 36px;
+}

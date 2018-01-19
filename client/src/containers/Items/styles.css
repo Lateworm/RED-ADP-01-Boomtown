@@ -1,0 +1,23 @@
+.masonrycontainer {
+  width: 100%;
+}
+
+.card {
+  width: 30.33%;
+  margin: 1.5%;
+  min-width: 225px;
+}
+
+.card-media {
+	text-transform: uppercase;
+}
+
+.react-gravatar {
+  border-radius: 50%;
+}
+
+.items-container {
+  width: 100%;
+}
+
+

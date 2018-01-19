@@ -1,0 +1,21 @@
+.litterbox {
+	margin-left: auto;
+	margin-right: auto;
+	/* height: 350px; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.grumpy-cat {
+	width: 500px;
+	margin-bottom: 2rem;
+
+}
+
+.nope {
+	font-size: 1.5rem;
+	text-align: center;
+	text-transform: uppercase;
+}
