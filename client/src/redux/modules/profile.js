@@ -1,14 +1,14 @@
 // Actions
 
-const GET_ITEMS_LOADING = 'GET_ITEMS_LOADING';
-const GET_ITEMS = 'GET_ITEMS';
-const GET_ITEMS_ERROR = 'GET_ITEMS_ERROR';
+const GET_USERS_LOADING = 'GET_USERS_LOADING';
+const GET_USERS = 'GET_USERS';
+const GET_USERS_ERROR = 'GET_USERS_ERROR';
 
 // Action creators
 
-const getItemsLoading = () => ({ type: GET_ITEMS_LOADING });
-const getItems = (items) => ({ type: GET_ITEMS, payload: items });
-const getItemsError = (error) => ({ type: GET_ITEMS_ERROR, payload: error });
+const getUsersLoading = () => ({ type: GET_USERS_LOADING });
+const getUsers = (items) => ({ type: GET_USERS, payload: items });
+const getUsersError = (error) => ({ type: GET_USERS_ERROR, payload: error });
 
 // Async action creator
 
@@ -16,7 +16,7 @@ const ITEMS_URL = "http://localhost:4000/items/?itemowner=${userid}";
 const USERS_URL = "http://localhost:4000/users";
 
 export const fetchItemsAndUser = userid => dispatch => {
-	dispatch(getItemsLoading());
+	dispatch(getUsersLoading());
 
 	return Promise.all(
 		[`http://localhost:4000/items/?itemowner=${userid}`, USERS_URL]
@@ -26,16 +26,15 @@ export const fetchItemsAndUser = userid => dispatch => {
 			const [itemsList, usersList] = response;
 
 			// console.log(itemsList);
-			// console.log(usersList);
-			console.log('We\'re connected to redux/modules/profile.js');
+			console.log(usersList[0]);
 
-			const itemsWithOwners = usersList;
+			const itemsWithOwners = usersList[0];
+			// map/filter
 
 
+			dispatch(getUsers(itemsWithOwners));
 
-			dispatch(getItems(itemsWithOwners));
-
-		}).catch(error => dispatch(getItemsError(error.message)));
+		}).catch(error => dispatch(getUsersError(error.message)));
 
 };
 
@@ -48,7 +47,7 @@ export default (state = {
 	error: ''
 	// tags: [
 	// 	'Electronics',
-	// 	'Houshold Items',
+	// 	'Houshold Users',
 	// 	'Musical Instruments',
 	// 	'Physical Media',
 	// 	'Recreational Equipment',
@@ -60,15 +59,15 @@ export default (state = {
 
 	switch (action.type) {
 
-		case GET_ITEMS_LOADING: {
+		case GET_USERS_LOADING: {
 			return { ...state, isLoading: true, error: '' };
 		}
 
-		case GET_ITEMS: {
+		case GET_USERS: {
 			return { ...state, isLoading: false, itemsData: action.payload, error: '' }
 		}
 
-		case GET_ITEMS_ERROR: {
+		case GET_USERS_ERROR: {
 			return { ...state, isLoading: false, error: action.payload }
 		}
 

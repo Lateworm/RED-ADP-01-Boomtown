@@ -14,7 +14,7 @@ class ProfileContainer extends Component {
 
 	render() {
 		return (
-			<Profile items={this.props.items} />
+			<Profile userid={this.props.match.params.userid} items={this.props.items} />
 		);
 	}
 
@@ -22,6 +22,7 @@ class ProfileContainer extends Component {
 
 const mapStatetoProps = (state) => ({
 	user: state.items.usersData
+	// prob should be state.user.usersData
 });
 
 export default connect(mapStatetoProps)(ProfileContainer)

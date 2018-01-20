@@ -18,11 +18,8 @@ import {
 } from "material-ui/Card";
 import Paper from 'material-ui/Paper';
 
-const Profile = ({ items }) => {
+const Profile = ({ userid }) => {
 	//with this syntax we don't use a render method
-
-	// for testing purposes only. This needs to be taken from the URL slug
-	const testhash = 'eEvh1WUF5nb5eeUksUQb3Ph0kOU2';
 
 	return (
 		<div>
@@ -31,7 +28,7 @@ const Profile = ({ items }) => {
 				zDepth={1}
 				children={
 					<div>
-						<h1>User Name</h1>
+						<h1>{userid}</h1>
 						<h2>What's a Motto with you?</h2>
 						<h3>X Items shared</h3>
 						<h3>X Items borrowed</h3>
