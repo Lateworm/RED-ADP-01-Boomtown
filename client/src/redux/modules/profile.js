@@ -12,7 +12,6 @@ const getUsersError = (error) => ({ type: GET_USERS_ERROR, payload: error });
 
 // Async action creator
 
-const ITEMS_URL = "http://localhost:4000/items/?itemowner=${userid}";
 const USERS_URL = "http://localhost:4000/users";
 
 export const fetchItemsAndUser = userid => dispatch => {
@@ -23,14 +22,10 @@ export const fetchItemsAndUser = userid => dispatch => {
 			.map(url => fetch(url)
 				.then(response => response.json())))
 		.then(response => {
-			const [itemsList, usersList] = response;
+			const [usersList] = response;
 
-			// console.log(itemsList);
-			console.log(usersList[0]);
-
-			const itemsWithOwners = usersList[0];
-			// map/filter
-
+			const itemsWithOwners = usersList;
+			// TODO: map/filter to pass out just the one user we need
 
 			dispatch(getUsers(itemsWithOwners));
 
@@ -42,18 +37,7 @@ export const fetchItemsAndUser = userid => dispatch => {
 
 export default (state = {
 	isLoading: false,
-	itemsData: [],
-	// usersData: [],
 	error: ''
-	// tags: [
-	// 	'Electronics',
-	// 	'Houshold Users',
-	// 	'Musical Instruments',
-	// 	'Physical Media',
-	// 	'Recreational Equipment',
-	// 	'Sporting Goods',
-	// 	'Tools',
-	// ],
 
 }, action) => {
 
@@ -64,7 +48,7 @@ export default (state = {
 		}
 
 		case GET_USERS: {
-			return { ...state, isLoading: false, itemsData: action.payload, error: '' }
+			return { ...state, isLoading: false, userData: action.payload, error: '' } // creates state.users.userData
 		}
 
 		case GET_USERS_ERROR: {

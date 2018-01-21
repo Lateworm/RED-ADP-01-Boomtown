@@ -1,6 +1,4 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./styles.css";
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import "./styles.css"
 
@@ -8,14 +7,6 @@ import Gravatar from "react-gravatar";
 
 
 // import from Material UI
-import {
-	Card,
-	CardActions,
-	CardHeader,
-	CardMedia,
-	CardTitle,
-	CardText
-} from "material-ui/Card";
 import Paper from 'material-ui/Paper';
 
 const Profile = ({ userid }) => {
