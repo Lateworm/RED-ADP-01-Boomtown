@@ -6,7 +6,7 @@ export default class Footer extends Component {
 	render() {
 		return (
 
-			<p class="footer-text">© 2017 Boomtown Corp. All Rights Reserved</p>
+			<p className="footer-text">© 2017 Boomtown Corp. All Rights Reserved</p>
 
 		);
 	}
