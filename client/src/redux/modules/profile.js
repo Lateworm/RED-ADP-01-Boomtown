@@ -24,10 +24,11 @@ export const fetchItemsAndUser = userid => dispatch => {
 		.then(response => {
 			const [usersList] = response;
 
-			const itemsWithOwners = usersList;
+			const allItemsFromUser = usersList;
+
 			// TODO: map/filter to pass out just the one user we need
 
-			dispatch(getUsers(itemsWithOwners));
+			dispatch(getUsers(allItemsFromUser));
 
 		}).catch(error => dispatch(getUsersError(error.message)));
 
@@ -48,7 +49,7 @@ export default (state = {
 		}
 
 		case GET_USERS: {
-			return { ...state, isLoading: false, userData: action.payload, error: '' } // creates state.users.userData
+			return { ...state, isLoading: false, userItems: action.payload, error: '' } // creates state.users.userItems
 		}
 
 		case GET_USERS_ERROR: {
