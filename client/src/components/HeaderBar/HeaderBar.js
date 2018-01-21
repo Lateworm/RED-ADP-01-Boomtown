@@ -8,11 +8,34 @@ import "./styles.css";
 import RaisedButton from "material-ui/RaisedButton";
 import AppBar from "material-ui/AppBar";
 import SelectField from "material-ui/SelectField";
+import MenuItem from "material-ui/MenuItem";
 import Logo from "../../images/boomtown-logo.svg";
-import MenuItem from "material-ui/MenuItem"; // items in the select menu
+
 
 class HeaderBar extends Component {
+	state = {
+		values: [],
+	};
+
+	handleChange = (event, index, values) => {
+		this.setState({ values });
+		console.log('poo');
+	}
+
+	menuItems(values) { // set up the selectable values of the menu
+		return this.props.tags.map((tag) => (
+			<MenuItem
+				key={tag}
+				insetChildren={true}
+				checked={values && values.indexOf(tag) > -1}
+				value={tag}
+				primaryText={tag}
+			/>
+		));
+	}
+
 	render() {
+		const { values } = this.state;
 		return (
 			<AppBar
 				className="navbar"
@@ -23,18 +46,13 @@ class HeaderBar extends Component {
 					</div>
 				}
 				title={
-					<SelectField // try setting this inside the title property
+					<SelectField
 						multiple={true}
 						className="navbar-filter"
 						hintText="Filter by Tag"
+						value={values}
 					>
-						<MenuItem value={1} primaryText={this.props.tags[0]} />
-						<MenuItem value={2} primaryText={this.props.tags[1]} />
-						<MenuItem value={3} primaryText={this.props.tags[2]} />
-						<MenuItem value={4} primaryText={this.props.tags[3]} />
-						<MenuItem value={5} primaryText={this.props.tags[4]} />
-						<MenuItem value={6} primaryText={this.props.tags[5]} />
-						<MenuItem value={7} primaryText={this.props.tags[6]} />
+						{this.menuItems(values)}
 					</SelectField>
 				}
 				iconElementRight={
