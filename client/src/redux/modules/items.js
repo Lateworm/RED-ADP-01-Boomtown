@@ -25,10 +25,6 @@ export const fetchItemsAndUser = () => (dispatch) => {
 		.then(response => {
 			const [itemsList, usersList] = response;
 
-			// console.log(itemsList);
-			// console.log(usersList);
-			console.log('We\'re connected to redux/modules/items.js');
-
 			const itemsWithOwners = itemsList.map(item => {
 				// replace the itemowner hash with useful info about the owner
 				item.itemowner = usersList.find(user => user.id === item.itemowner);

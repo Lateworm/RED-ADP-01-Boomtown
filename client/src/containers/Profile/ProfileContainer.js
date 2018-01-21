@@ -14,15 +14,14 @@ class ProfileContainer extends Component {
 
 	render() {
 		return (
-			<Profile userid={this.props.match.params.userid} items={this.props.items} />
+			<Profile list={this.props.itemsData} userid={this.props.match.params.userid} />
 		);
 	}
 
 }
 
 const mapStatetoProps = (state) => ({
-	user: state.items.usersData
-	// prob should be state.user.usersData
+	itemsData: state.userItems.userItems, // TODO: make this path less stupid. Also, compare this against ItemsContainer and see if we need the other two props created there.
 });
 
 export default connect(mapStatetoProps)(ProfileContainer)

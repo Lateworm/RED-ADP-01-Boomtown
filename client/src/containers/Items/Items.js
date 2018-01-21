@@ -24,15 +24,14 @@ const Items = ({ list }) => {
 		originTop: true
 	};
 
+	console.log(list);
+
 	return (
 		<div className="masonrycontainer">
 
 			<Masonry options={masonryOptions}>
 				{list.map(item => (
 					<Card className="card" key={item.id}>
-
-
-
 						{(item.borrower)
 							? // if the item is lent out to someone print their name on the overlay
 							<CardMedia
@@ -46,9 +45,6 @@ const Items = ({ list }) => {
 								<img src={item.imageurl} alt={item.title} />
 							</CardMedia>
 						}
-
-						{/* <Link to="/profile/" >LInky!</Link> */}
-
 						<a href={"/profile/" + item.itemowner.id} >
 							<CardHeader
 								title={item.itemowner.fullname}
@@ -58,10 +54,8 @@ const Items = ({ list }) => {
 								}
 							/>
 						</a>
-
 						<CardTitle title={item.title} subtitle={item.tags} />
 						<CardText>{item.description}</CardText>
-
 						{(item.borrower)
 							? // if the item is lent out to someone, don't render a Borrow button
 							''
@@ -75,7 +69,6 @@ const Items = ({ list }) => {
 								/>
 							</CardActions>
 						}
-
 					</Card>
 				))}
 			</Masonry>

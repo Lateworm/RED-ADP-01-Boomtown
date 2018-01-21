@@ -1,36 +1,47 @@
 // Actions
 
-const GET_USERS_LOADING = 'GET_USERS_LOADING';
-const GET_USERS = 'GET_USERS';
-const GET_USERS_ERROR = 'GET_USERS_ERROR';
+const GET_ITEMS_LOADING = 'GET_ITEMS_LOADING';
+const GET_ITEMS = 'GET_ITEMS';
+const GET_ITEMS_ERROR = 'GET_ITEMS_ERROR';
 
 // Action creators
 
-const getUsersLoading = () => ({ type: GET_USERS_LOADING });
-const getUsers = (items) => ({ type: GET_USERS, payload: items });
-const getUsersError = (error) => ({ type: GET_USERS_ERROR, payload: error });
+const getItemsLoading = () => ({ type: GET_ITEMS_LOADING });
+const getItems = (items) => ({ type: GET_ITEMS, payload: items });
+const getItemsError = (error) => ({ type: GET_ITEMS_ERROR, payload: error });
 
 // Async action creator
 
+const ITEMS_URL = "http://localhost:4000/items";
 const USERS_URL = "http://localhost:4000/users";
 
 export const fetchItemsAndUser = userid => dispatch => {
-	dispatch(getUsersLoading());
+	dispatch(getItemsLoading());
 
 	return Promise.all(
-		[`http://localhost:4000/items/?itemowner=${userid}`, USERS_URL]
+		[`${ITEMS_URL}/?itemowner=${userid}`, USERS_URL] // query to retreive only items from the current user
 			.map(url => fetch(url)
 				.then(response => response.json())))
 		.then(response => {
-			const [usersList] = response;
+			const [itemsList, usersList] = response;
 
-			const allItemsFromUser = usersList;
+			const allItemsFromUser = itemsList.map(item => {
+				// replace the itemowner hash with useful info about the owner
+				item.itemowner = usersList.find(user => user.id === item.itemowner);
+				if (item.borrower) {
+					// replace the borrower hash with useful info about the borrower
+					item.borrower = usersList.find(user => user.id === item.borrower);
+				}
+				return item;
+			});
+
+
 
 			// TODO: map/filter to pass out just the one user we need
 
-			dispatch(getUsers(allItemsFromUser));
+			dispatch(getItems(allItemsFromUser));
 
-		}).catch(error => dispatch(getUsersError(error.message)));
+		}).catch(error => dispatch(getItemsError(error.message)));
 
 };
 
@@ -38,21 +49,22 @@ export const fetchItemsAndUser = userid => dispatch => {
 
 export default (state = {
 	isLoading: false,
+	userItems: [],
 	error: ''
 
 }, action) => {
 
 	switch (action.type) {
 
-		case GET_USERS_LOADING: {
+		case GET_ITEMS_LOADING: {
 			return { ...state, isLoading: true, error: '' };
 		}
 
-		case GET_USERS: {
+		case GET_ITEMS: {
 			return { ...state, isLoading: false, userItems: action.payload, error: '' } // creates state.users.userItems
 		}
 
-		case GET_USERS_ERROR: {
+		case GET_ITEMS_ERROR: {
 			return { ...state, isLoading: false, error: action.payload }
 		}
 
