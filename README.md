@@ -28,12 +28,10 @@ Happy coding :)
 
 do PropTypes all over the place
 get filter working
-Make the footer and call it in Layout.js
 figure out turntable unavailability
 Simplify the not found container by removing the unused file and moving it to components
 avoid over-fetching / use query strings
 rename items to users in redux/modules/profile.js
-Learn React tools
 Deal with all instances of TODO:
 display commas between tags on cards
 

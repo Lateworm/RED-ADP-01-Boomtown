@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import HeaderBar from '../HeaderBar/HeaderBar'
+import HeaderBar from '../HeaderBar/HeaderBar';
+import Footer from '../Footer/Footer'
 
 import './styles.css';
 
@@ -12,7 +13,8 @@ const Layout = ({ children }) => (
 		<div className="appContent">
 			{children}
 		</div>
-		{/* And a footer here, but not on the login route... */}
+		<Footer />
+		{/* TODO: Hide the footer on the login route... */}
 	</div>
 );
 
