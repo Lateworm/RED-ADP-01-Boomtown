@@ -18,12 +18,13 @@ class HeaderBar extends Component {
 				className="navbar"
 				iconElementLeft={
 					<div>
-						<img className="navbar-logo" src={Logo} alt="The Boomtown Logo" />
+						<a href="/"><img className="navbar-logo" src={Logo} alt="The Boomtown Logo" /></a>
 
 					</div>
 				}
 				title={
 					<SelectField // try setting this inside the title property
+						multiple={true}
 						className="navbar-filter"
 						hintText="Filter by Tag"
 					>
