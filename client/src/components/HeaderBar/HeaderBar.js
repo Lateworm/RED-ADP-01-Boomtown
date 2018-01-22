@@ -10,16 +10,17 @@ import AppBar from "material-ui/AppBar";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
 import Logo from "../../images/boomtown-logo.svg";
-
+import handleChange from "react";
 
 class HeaderBar extends Component {
+
 	state = {
 		values: [],
-	};
+	}
 
 	handleChange = (event, index, values) => {
 		this.setState({ values });
-		console.log('poo');
+		console.log({ values });
 	}
 
 	menuItems(values) { // set up the selectable values of the menu
@@ -50,10 +51,11 @@ class HeaderBar extends Component {
 						multiple={true}
 						className="navbar-filter"
 						hintText="Filter by Tag"
-						value={values}
+						value={values} // this.state.value? values?
+						onChange={this.handleChange} // TODO: activate some kind of a change handler??
 					>
 						{this.menuItems(values)}
-					</SelectField>
+					</ SelectField>
 				}
 				iconElementRight={
 					<span>
