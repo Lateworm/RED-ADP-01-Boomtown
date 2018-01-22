@@ -12,7 +12,7 @@ const getItemsError = (error) => ({ type: GET_ITEMS_ERROR, payload: error });
 
 // Variable to hold the user's filtering options
 // TODO: bring in a dynamic query from the HeaderBar component
-const query = "Household Items,Recreational Equipment";
+const tags = "Household Items,Recreational Equipment";
 
 // Async action creator
 
@@ -23,7 +23,7 @@ export const fetchItemsAndUser = () => (dispatch) => {
 	dispatch(getItemsLoading());
 
 	return Promise.all(
-		[`${ITEMS_URL}/?tags=${query}`, USERS_URL]
+		[`${ITEMS_URL}/?tags=${tags}`, USERS_URL]
 			.map(url => fetch(url)
 				.then(response => response.json())))
 		.then(response => {

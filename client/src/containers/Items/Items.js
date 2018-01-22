@@ -17,14 +17,16 @@ import {
 } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 
-const Items = ({ list }) => {
-	//with this syntax we don't use a render method
+
+const Items = ({ list, tags }) => {
+	// list = object of all items to display
+	// with this syntax we don't use a render method
+
+	console.log(`prop tags = ${tags}`)
 
 	const masonryOptions = {
 		originTop: true
 	};
-
-	console.log(list);
 
 	return (
 		<div className="masonrycontainer">
@@ -54,7 +56,7 @@ const Items = ({ list }) => {
 								}
 							/>
 						</a>
-						<CardTitle title={item.title} subtitle={item.tags} />
+						<CardTitle title={item.title} subtitle={item.tags} /> {/* TODO: comma-separate if multiple values */}
 						<CardText>{item.description}</CardText>
 						{(item.borrower)
 							? // if the item is lent out to someone, don't render a Borrow button
@@ -77,7 +79,8 @@ const Items = ({ list }) => {
 };
 
 Items.prototype = {
-	list: PropTypes.array.isRequired
+	list: PropTypes.array.isRequired,
+	tags: PropTypes.array.isRequired
 };
 
 export default Items;
