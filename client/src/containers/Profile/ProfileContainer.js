@@ -7,7 +7,9 @@ import Profile from './Profile';
 
 class ProfileContainer extends Component {
 
-	static propTypes = {};
+	static propTypes = {
+		itemsData: PropTypes.array.isRequired // An array of object, each item is an object
+	};
 	componentDidMount() {
 		this.props.dispatch(fetchItemsAndUser(this.props.match.params.userid));
 	}

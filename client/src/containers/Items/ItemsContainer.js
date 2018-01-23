@@ -7,7 +7,11 @@ import Items from "./Items";
 
 class ItemsContainer extends Component {
 
-	static propTypes = {};
+	static propTypes = {
+		isLoading: PropTypes.bool.isRequired,
+		itemsData: PropTypes.array.isRequired, // An array of object, each item is an object
+		error: PropTypes.string.isRequired
+	};
 	componentDidMount() {
 		this.props.dispatch(fetchItemsAndUser());
 	}
@@ -15,6 +19,7 @@ class ItemsContainer extends Component {
 	render() {
 		return (
 			<div className="items-container">
+				{/* Pass the itemsData object on to the Items function in Items.js as a prop */}
 				<Items list={this.props.itemsData} />
 			</div>
 		);
@@ -22,10 +27,11 @@ class ItemsContainer extends Component {
 
 }
 
+
+// connect ItemsContainer to the necessary keys from the Redux store and export the result
 const mapStateToProps = (state) => ({
 	isLoading: state.items.isLoading,
 	itemsData: state.items.itemsData,
 	error: state.items.error
 });
-
 export default connect(mapStateToProps)(ItemsContainer);
