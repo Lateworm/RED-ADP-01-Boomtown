@@ -1,6 +1,21 @@
 .profile-paper {
-	width: 800px;
-	min-height: 200px;
-	margin: 32px;
-	padding: 32px;
+  width: 800px;
+  min-height: 200px;
+  margin: 32px;
+  padding: 32px;
+}
+
+.profile-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.profile-div h1 {
+  font-size: 40px;
+}
+
+.profile-div h2 {
+  font-size: 16px;
+  color: #8a9093;
 }

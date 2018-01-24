@@ -20,10 +20,8 @@ import RaisedButton from "material-ui/RaisedButton";
 import Paper from "material-ui/Paper";
 
 const Profile = ({ list, userid, userInfo }) => {
-  // list = object of all items to display
-  // with this syntax we don't use a render method
-
-  console.log(userInfo);
+  // list = array of all items to display
+  // userInfo = object of data about the user being profiled
 
   const masonryOptions = {
     originTop: true
@@ -35,12 +33,16 @@ const Profile = ({ list, userid, userInfo }) => {
         className="profile-paper"
         zDepth={1}
         children={
-          <div>
-            <h1>{userInfo.fullname}</h1>
-            <h2>{userInfo.bio}</h2>
-            <h3>{list.length} Items shared</h3>
-            <h3>X Items borrowed</h3>
-            <Gravatar size={180} className="photo" email="sam@gmail.com" />
+          <div className="profile-div">
+            <div>
+              <h1>{userInfo.fullname}</h1>
+              <h2>{userInfo.bio}</h2>
+            </div>
+            <div>
+              <h3>{list.length} Items shared</h3>
+              <h3>X Items borrowed</h3>
+              <Gravatar size={180} className="photo" email={userInfo.email} />
+            </div>
           </div>
         }
       />
