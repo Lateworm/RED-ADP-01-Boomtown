@@ -79,7 +79,7 @@ export default (
         isLoading: false,
         error: "",
         userInfo: action.payload
-      }; // place data into state.userItems.users TODO: make the path less stupid
+      }; // place data into state.userItems.userInfo TODO: make the path less stupid
     }
 
     case GET_ITEMS_ERROR: {
