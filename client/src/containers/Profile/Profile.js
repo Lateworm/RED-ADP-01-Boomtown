@@ -75,7 +75,9 @@ const Profile = ({ list, userid, userInfo }) => {
                 }
               />
             </a>
-            <CardTitle title={item.title} subtitle={item.tags} />
+            <CardTitle title={item.title} subtitle={item.tags[0].title} />
+            {/* TODO: figure out how to render ALL tags.title if there are more than one.*/}
+            {/* TODO: comma-separate if multiple values */}
             <CardText>{item.description}</CardText>
             {item.borrower ? (
               // if the item is lent out to someone, don't render a Borrow button

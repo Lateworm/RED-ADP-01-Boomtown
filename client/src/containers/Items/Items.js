@@ -43,6 +43,7 @@ const Items = ({ list }) => {
               </CardMedia>
             )}
             <a href={"/profile/" + item.itemowner.id}>
+              {/* <a href={"/profile/" + item.itemowner.id}> */}
               <CardHeader
                 title={item.itemowner.fullname}
                 subtitle={Moment(item.created).fromNow()}
@@ -51,7 +52,8 @@ const Items = ({ list }) => {
                 }
               />
             </a>
-            <CardTitle title={item.title} subtitle={item.tags} />{" "}
+            <CardTitle title={item.title} subtitle={item.tags[0].title} />{" "}
+            {/* TODO: figure out how to render ALL tags.title if there are more than one.*/}
             {/* TODO: comma-separate if multiple values */}
             <CardText>{item.description}</CardText>
             {item.borrower ? (

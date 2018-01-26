@@ -35,7 +35,7 @@
           "title": "Recreational Equipment"
         }
       ],
-      "itemowner": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "created": "2017-10-01 16:29:49.31706-07",
       "available": false,
       "borrower": "eEvh1WUF5nb5eeUksUQb3Ph0kOU2"
@@ -71,7 +71,7 @@
           "title": "Tools"
         }
       ],
-      "itemowner": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "created": "2017-09-29 16:28:24.616127-07",
       "available": true,
       "borrower": null
@@ -92,7 +92,7 @@
       "itemowner": "k721A4pRNggCx7b6ryEE8vx1VIi1",
       "created": "2017-09-28 16:27:45.620653-07",
       "available": false,
-      "borrower": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2"
+      "borrower": "dQg4HT262FYOiuOUIRj1xrXjOva2"
     },
     {
       "id": 6,
@@ -201,7 +201,7 @@
           "title": "Electronics"
         }
       ],
-      "itemowner": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "created": "2017-09-22 16:23:24.992259-07",
       "available": true,
       "borrower": null
@@ -218,7 +218,7 @@
           "title": "Electronics"
         }
       ],
-      "itemowner": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "created": "2017-09-22 16:22:46.097822-07",
       "available": false,
       "borrower": "k721A4pRNggCx7b6ryEE8vx1VIi1"
@@ -272,7 +272,7 @@
           "title": "Electronics"
         }
       ],
-      "itemowner": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "created": "2017-09-19 16:20:17.023582-07",
       "available": true,
       "borrower": null
@@ -293,7 +293,7 @@
       "itemowner": "k721A4pRNggCx7b6ryEE8vx1VIi1",
       "created": "2017-09-18 16:19:29.381919-07",
       "available": false,
-      "borrower": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2"
+      "borrower": "dQg4HT262FYOiuOUIRj1xrXjOva2"
     },
     {
       "id": 17,
@@ -326,7 +326,7 @@
           "title": "Recreational Equipment"
         }
       ],
-      "itemowner": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "created": "2017-09-18 16:14:03.597363-07",
       "available": true,
       "borrower": null
@@ -343,7 +343,7 @@
           "title": "Electronics"
         }
       ],
-      "itemowner": "Qdd5HoEin0OPxNUZcB5sDc7xGHD2",
+      "itemowner": "dQg4HT262FYOiuOUIRj1xrXjOva2",
       "created": "2017-09-17 16:12:11.174503-07",
       "available": true,
       "borrower": null
