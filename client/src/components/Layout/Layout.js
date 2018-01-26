@@ -1,29 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import HeaderBar from '../HeaderBar/HeaderBar';
-import Footer from '../Footer/Footer'
+import React from "react";
+import PropTypes from "prop-types";
+import HeaderBar from "../HeaderBar";
+import Footer from "../Footer";
 
-import './styles.css';
+import "./styles.css";
 
 const Layout = ({ children }) => (
-	<div className="appContentWrapper">
-		<div className="appHeader">
-			<HeaderBar />
-		</div>
-		<div className="appContent">
-			{children}
-		</div>
-		<Footer />
-		{/* TODO: Hide the footer on the login route... */}
-	</div>
+  <div className="appContentWrapper">
+    <div className="appHeader">
+      <HeaderBar />
+    </div>
+    <div className="appContent">{children}</div>
+    <Footer />
+    {/* TODO: Hide the footer on the login route... */}
+  </div>
 );
 
 Layout.defaultProps = {
-	children: null
+  children: null
 };
 
 Layout.propTypes = {
-	children: PropTypes.node
+  children: PropTypes.node
 };
 
 export default Layout;

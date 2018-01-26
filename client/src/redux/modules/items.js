@@ -61,8 +61,7 @@ export default (
       "Recreational Equipment",
       "Sporting Goods",
       "Tools"
-    ],
-    filter: ""
+    ]
   },
   action
 ) => {

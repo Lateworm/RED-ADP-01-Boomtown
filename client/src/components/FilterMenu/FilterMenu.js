@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import handleChange from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 // imports for Material UI
-
 import RaisedButton from "material-ui/RaisedButton";
 import AppBar from "material-ui/AppBar";
 import SelectField from "material-ui/SelectField";
@@ -18,6 +18,7 @@ class FilterMenu extends Component {
   handleChange = (event, index, values) => {
     this.setState({ values });
     console.log({ values }); // log an array of the currently selected tags TODO: send this to redux store
+    // this.props.dispatch(getFilters(values));
   };
 
   menuItems(values) {
@@ -41,7 +42,7 @@ class FilterMenu extends Component {
         className="navbar-filter"
         hintText="Filter by Tag"
         value={values} // this.state.value? values?
-        onChange={this.handleChange} // TODO: activate some kind of a change handler??
+        onChange={this.handleChange}
       >
         {this.menuItems(values)}
       </SelectField>

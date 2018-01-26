@@ -1,4 +1,4 @@
-// Actions
+// Action types
 
 const GET_ITEMS_LOADING = "GET_ITEMS_LOADING"; // TODO: figure out what this does
 const GET_ITEMS = "GET_ITEMS";
