@@ -54,13 +54,13 @@ export default (
     // usersData: [],
     error: "",
     tags: [
-      "Electronics",
-      "Houshold Items",
-      "Musical Instruments",
-      "Physical Media",
-      "Recreational Equipment",
-      "Sporting Goods",
-      "Tools"
+      "Electronics", // 1
+      "Houshold Items", // 2
+      "Musical Instruments", // 3
+      "Physical Media", // 4
+      "Recreational Equipment", // 5
+      "Sporting Goods", // 6
+      "Tools" // 7
     ]
   },
   action

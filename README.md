@@ -1,4 +1,6 @@
-# Boomtown Starter
+# Boomtown
+
+An app for sharing
 
 ## Installation
 
@@ -10,31 +12,26 @@ cd client && npm install
 
 ## Start-up
 
-In the `client` directory, run:
-
-```bash
-npm start
-```
-
-and from inside the `server` directory:
+From inside the `server` directory, start the JSON server:
 
 ```bash
 json-server --watch db.json -p 4000
 ```
 
-Happy coding :)
+then in `server/graphql` start the GraphQL server:
 
-## To-do
+```bash
+npm start
+```
 
-do PropTypes all over the place
-get filter working
-figure out turntable unavailability
-Simplify the not found container by removing the unused file and moving it to components
-avoid over-fetching / use query strings
-rename items to users in redux/modules/profile.js
-Deal with all instances of TODO:
-display commas between tags on cards
+In the `client` directory, start the client:
 
-Filtering
-	onHandleChange
+```bash
+npm start
+```
 
+If needed, access the GraphiQL UI at:
+
+```
+http://localhost:3002/graphiql
+```
