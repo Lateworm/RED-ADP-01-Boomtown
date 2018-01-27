@@ -5,31 +5,48 @@ import { fetchItemsAndUser } from "../../redux/modules/items";
 
 import Items from "./Items";
 
+import { graphql } from "react-apollo";
+import gql from "graphql-tag";
+
 class ItemsContainer extends Component {
+  render() {
+    const { loading, items } = this.props.data;
+    return loading ? <p>Loading...</p> : <Items list={items} />;
+  }
+
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
     itemsData: PropTypes.array.isRequired, // An array of object, each item is an object
     error: PropTypes.string.isRequired
   };
+} // end class ItemsContainer
 
-  componentDidMount() {
-    this.props.dispatch(fetchItemsAndUser());
+const fetchItems = gql`
+  query {
+    items {
+      available
+      borrower {
+        id
+      }
+      description
+      id
+      imageurl
+      itemowner {
+        bio
+        email
+        fullname
+        id
+      }
+      tags {
+        id
+        title
+      }
+      title
+    }
   }
-
-  render() {
-    return (
-      <div className="items-container">
-        {/* Pass the itemsData object on to the Items function in Items.js as a prop */}
-        <Items list={this.props.itemsData} />
-      </div>
-    );
-  }
-}
+`;
+// tags will need to be an array
 
 // connect ItemsContainer to the necessary keys from the Redux store and export the result
-const mapStateToProps = state => ({
-  isLoading: state.items.isLoading,
-  itemsData: state.items.itemsData,
-  error: state.items.error
-});
-export default connect(mapStateToProps)(ItemsContainer);
+
+export default graphql(fetchItems)(ItemsContainer);
