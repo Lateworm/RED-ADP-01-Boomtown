@@ -408,38 +408,31 @@
   "tags": [
     {
       "id": 1,
-      "title": "Electronics",
-      "filter": false
+      "title": "Electronics"
     },
     {
       "id": 2,
-      "title": "Household Items",
-      "filter": false
+      "title": "Household Items"
     },
     {
       "id": 3,
-      "title": "Musical Instruments",
-      "filter": false
+      "title": "Musical Instruments"
     },
     {
       "id": 4,
-      "title": "Physical Media",
-      "filter": false
+      "title": "Physical Media"
     },
     {
       "id": 5,
-      "title": "Recreational Equipment",
-      "filter": false
+      "title": "Recreational Equipment"
     },
     {
       "id": 6,
-      "title": "Sporting Goods",
-      "filter": false
+      "title": "Sporting Goods"
     },
     {
       "id": 7,
-      "title": "Tools",
-      "filter": false
+      "title": "Tools"
     }
   ]
 }
