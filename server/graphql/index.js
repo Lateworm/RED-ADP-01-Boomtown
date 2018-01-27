@@ -5,8 +5,11 @@ const schema = require("./api/schema");
 
 const app = express();
 
-const GQL_PORT = process.env.PORT; // Where does this come from?
-// process.env.PORT is specified in package.json
+const GQL_PORT = process.env.PORT; // process.env.PORT is specified in package.json
+
+const cors = require("cors");
+
+app.use("*", cors()); // TODO: Whitelist for production
 
 // Where we will send all of our GraphQL requests
 app.use("/graphql", bodyParser.json(), graphqlExpress({ schema }));
