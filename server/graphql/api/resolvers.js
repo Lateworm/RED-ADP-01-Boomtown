@@ -76,6 +76,21 @@ const resolveFunctions = {
     shareditems(user) {
       return fetch(`${ITEMS_URL}/?itemowner=${user.id}`).then(r => r.json());
     }
+  },
+
+  Mutation: {
+    addItem(root, { newItem: { title } }) {
+      // TODO: resolve new items to the database
+      // TODO: Must return a new Item thanks to out mutation schema
+      // access properties of newItem with dot notation
+      console.log({ title }); // will appear in the terminal where Apollo server is running
+      return { title };
+    },
+
+    updateItem(root, { newItem: { borrower } }) {
+      console.log({ borrower });
+      return { borrower };
+    }
   }
 };
 
