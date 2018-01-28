@@ -19,7 +19,7 @@ import {
 import RaisedButton from "material-ui/RaisedButton";
 import Paper from "material-ui/Paper";
 
-const Profile = ({ list, userid, userInfo }) => {
+const Profile = ({ list, userid }) => {
   // list = array of all items to display
   // userInfo = object of data about the user being profiled
 
@@ -27,6 +27,8 @@ const Profile = ({ list, userid, userInfo }) => {
     originTop: true
   };
 
+  console.log("Logging Profile.js > const Profile > prop list ...");
+  console.log(list);
   return (
     <div>
       <Paper
@@ -35,13 +37,13 @@ const Profile = ({ list, userid, userInfo }) => {
         children={
           <div className="profile-div">
             <div>
-              <h1>{userInfo.fullname}</h1>
-              <h2>{userInfo.bio}</h2>
+              <h1>User Name</h1>
+              <h2>User Bio</h2>
             </div>
             <div>
-              <h3>{list.length} Items shared</h3>
+              <h3>Items shared</h3>
               <h3>X Items borrowed</h3>
-              <Gravatar size={180} className="photo" email={userInfo.email} />
+              <Gravatar size={180} className="photo" email="User Email" />
             </div>
           </div>
         }
@@ -76,8 +78,6 @@ const Profile = ({ list, userid, userInfo }) => {
               />
             </a>
             <CardTitle title={item.title} subtitle={item.tags[0].title} />
-            {/* TODO: figure out how to render ALL tags.title if there are more than one.*/}
-            {/* TODO: comma-separate if multiple values */}
             <CardText>{item.description}</CardText>
             {item.borrower ? (
               // if the item is lent out to someone, don't render a Borrow button
