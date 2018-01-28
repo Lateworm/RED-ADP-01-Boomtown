@@ -29,33 +29,35 @@ const typeDefs = `
 		title: String
 	}
 
-	input TagInput {
-		id: ID
-		title: String
-	}
-
 	input AddItemInput {
 		imageurl: String
 		title: String
 		description: String
 		tags: [TagInput]
 	}
+	input TagInput {
+		id: ID
+		title: String
+	}
 
 	input UpdateItemInput {
 		id: ID
-		borrower: ID
+		borrower: [BorrowerInput]
+	}
+	input BorrowerInput {
+		id: ID
 	}
 
 	type Mutation {
+		updateItem(updatedItem: UpdateItemInput): Item
 		addItem(newItem: AddItemInput): Item
-		updateItem(newItem: UpdateItemInput): Item
 	}
 
 	type Query {
 		items: [Item]
 		users: [User]
-		user(id: ID): User
-		item(id: ID): Item
+		userById(id: ID): User
+		itemById(id: ID): Item
 	}
 
 `;

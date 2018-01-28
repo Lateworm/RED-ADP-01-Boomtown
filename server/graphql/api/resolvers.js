@@ -1,39 +1,5 @@
 const fetch = require("node-fetch");
 
-// mock database
-
-const Items = [
-  {
-    id: "1",
-    title: "Chainsaw",
-    description: "quick and dirty",
-    ownerid: 2,
-    borrowerid: 1
-  },
-  {
-    id: "2",
-    title: "Bandsaw",
-    description: "tighten before use, loosen after use",
-    ownerid: 1,
-    borrowerid: 2
-  }
-];
-
-const Users = [
-  {
-    id: "1",
-    email: "john@gmail.com",
-    name: "John",
-    imageurl: "www.google.com"
-  },
-  {
-    id: "1",
-    email: "jason@gmail.com",
-    name: "Jason",
-    imageurl: "www.google.com"
-  }
-];
-
 const ITEMS_URL = "http://localhost:4000/items";
 const USERS_URL = "http://localhost:4000/users";
 
@@ -47,11 +13,11 @@ const resolveFunctions = {
       return fetch(USERS_URL).then(r => r.json());
     },
 
-    user(root, { id }) {
+    userById(root, { id }) {
       return fetch(`${USERS_URL}/${id}`).then(r => r.json());
     },
 
-    item(root, { id }) {
+    itemById(root, { id }) {
       return fetch(`${ITEMS_URL}/${id}`).then(r => r.json());
     }
   },
@@ -79,17 +45,17 @@ const resolveFunctions = {
   },
 
   Mutation: {
-    addItem(root, { newItem: { title } }) {
-      // TODO: resolve new items to the database
-      // TODO: Must return a new Item thanks to out mutation schema
-      // access properties of newItem with dot notation
-      console.log({ title }); // will appear in the terminal where Apollo server is running
-      return { title };
-    },
-
-    updateItem(root, { newItem: { borrower } }) {
+    updateItem(root, { updatedItem: { borrower } }) {
       console.log({ borrower });
       return { borrower };
+    },
+
+    addItem(root, { newItem: { imageurl, title, description, tags } }) {
+      // TODO: resolve new items to the database
+      // TODO: Must return a new Item thanks to our mutation schema
+      // access properties of newItem with dot notation
+      console.log({ title }); // will appear in the terminal where Apollo server is running
+      return { imageurl, title, description, tags };
     }
   }
 };
