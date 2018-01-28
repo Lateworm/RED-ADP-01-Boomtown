@@ -26,7 +26,7 @@ const Items = ({ list }) => {
       <Masonry options={masonryOptions}>
         {list.map(item => (
           <Card className="card" key={item.id}>
-            {item.borrower ? (
+            {item.borrower.fullname ? (
               // if the item is lent out to someone print their name on the overlay
               <CardMedia
                 className="card-media"
@@ -56,7 +56,7 @@ const Items = ({ list }) => {
             {/* TODO: figure out how to render ALL tags.title if there are more than one.*/}
             {/* TODO: comma-separate if multiple values */}
             <CardText>{item.description}</CardText>
-            {item.borrower ? (
+            {item.borrower.id ? (
               // if the item is lent out to someone, don't render a Borrow button
               ""
             ) : (

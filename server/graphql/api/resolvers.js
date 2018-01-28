@@ -27,12 +27,13 @@ const resolveFunctions = {
       return fetch(`${USERS_URL}/${item.itemowner}`).then(r => r.json());
     },
     borrower(item) {
-      return fetch(`${USERS_URL}/${item.itemowner}`).then(r => r.json());
+      return fetch(`${USERS_URL}/${item.borrower}`).then(r => r.json());
     },
     tags() {
       return [];
     },
     async tags(item) {
+      // TODO: Why do we have async here, but not for borrower and itemowner?
       const res = await fetch(`${ITEMS_URL}/${item.id}`).then(r => r.json());
       return item.tags;
     }
