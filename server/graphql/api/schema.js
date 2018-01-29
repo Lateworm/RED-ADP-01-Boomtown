@@ -30,6 +30,7 @@ const typeDefs = `
 	}
 
 	input AddItemInput {
+		itemowner: ID
 		imageurl: String
 		title: String
 		description: String

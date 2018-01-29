@@ -51,12 +51,16 @@ const resolveFunctions = {
       return { borrower };
     },
 
-    addItem(root, { newItem: { imageurl, title, description, tags } }) {
+    addItem(
+      root,
+      { newItem: { itemowner, imageurl, title, description, tags } }
+    ) {
+      // TODO: Get this working in graphiQL. The itemowner is gumming up the works.
       // TODO: resolve new items to the database
       // TODO: Must return a new Item thanks to our mutation schema
       // access properties of newItem with dot notation
       console.log({ title }); // will appear in the terminal where Apollo server is running
-      return { imageurl, title, description, tags };
+      return { itemowner, imageurl, title, description, tags };
     }
   }
 };
