@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import handleChange from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { getFilters } from "../../redux/modules/filtermenu";
 
 // imports for Material UI
 import RaisedButton from "material-ui/RaisedButton";
@@ -18,7 +19,7 @@ class FilterMenu extends Component {
   handleChange = (event, index, values) => {
     this.setState({ values });
     console.log({ values }); // log an array of the currently selected tags TODO: send this to redux store
-    // this.props.dispatch(getFilters(values));
+    this.props.dispatch(getFilters(values));
   };
 
   menuItems(values) {
