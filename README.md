@@ -1,6 +1,20 @@
-# Boomtown
+# RED-adp-01-Boomtown
 
-An app for sharing
+Red Academy App Development Project 01: Boomtown Web App
+
+## About The Project
+
+This project is coursework for RED Academy's app development program. Boomtown is an app for sharing things.
+
+## Technologies
+
+* JavaScript / JSON
+* Node
+* React
+* Material UI
+* Redux
+* Apollo / GraphQL
+* Express
 
 ## Installation
 
