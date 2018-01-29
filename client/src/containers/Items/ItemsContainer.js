@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { fetchItemsAndUser } from "../../redux/modules/items";
-
 import Items from "./Items";
-
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -14,11 +10,11 @@ class ItemsContainer extends Component {
     return loading ? <p>Loading...</p> : <Items list={items} />;
   }
 
-  static propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    itemsData: PropTypes.array.isRequired, // An array of object, each item is an object
-    error: PropTypes.string.isRequired
-  };
+  // static propTypes = {
+  // isLoading: PropTypes.bool.isRequired, // TODO: make sure isLoading is always defined
+  // itemsData: PropTypes.array.isRequired, // An array of object, each item is an object
+  // error: PropTypes.string.isRequired
+  // };
 } // end class ItemsContainer
 
 const fetchItems = gql`
@@ -27,6 +23,7 @@ const fetchItems = gql`
       available
       borrower {
         id
+        fullname
       }
       description
       id

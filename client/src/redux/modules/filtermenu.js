@@ -4,7 +4,7 @@ const GET_FILTERS = "GET_FILTERS";
 
 // Action creators
 
-export const getFilters = filters => ({ type: GET_FILTERS, payload: filters }); // export??
+export const getFilters = filters => ({ type: GET_FILTERS, payload: filters });
 
 // Reducer
 

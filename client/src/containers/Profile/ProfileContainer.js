@@ -1,10 +1,6 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { fetchItemsAndUser } from "../../redux/modules/profile";
-
 import Profile from "./Profile";
-
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 

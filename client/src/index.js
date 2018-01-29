@@ -21,12 +21,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from "react-apollo";
 import client from "./config/apolloClient";
 
-{
-  /* Router link usage (inside a Router)
-import { BrowserRouter as Link } from "react-router-dom";
-<Link to="/login">Log In</Link> <Link to="/">Home</Link> */
-}
-
 const Boomtown = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
     <ApolloProvider client={client}>

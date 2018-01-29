@@ -15,7 +15,7 @@ const getItemsError = error => ({ type: GET_ITEMS_ERROR, payload: error });
 // Async action creator
 
 const ITEMS_URL = "http://localhost:4000/items";
-const USERS_URL = "http://localhost:4000/users";
+const USERS_URL = "http://localhost:4000/users"; // TODO: deprecate when possible
 
 export const fetchItemsAndUser = userid => dispatch => {
   // TODO: learn how this syntax works, and thus what this line does
@@ -40,6 +40,7 @@ export const fetchItemsAndUser = userid => dispatch => {
 
       const allInfoAboutUser = usersList.find(user => user.id === userid);
 
+      console.log(allItemsFromUser);
       dispatch(getItems(allItemsFromUser)); // send the list of items shared by this user to the store
       dispatch(getUsers(allInfoAboutUser));
 

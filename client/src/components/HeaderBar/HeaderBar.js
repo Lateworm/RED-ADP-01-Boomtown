@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import handleChange from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import FilterMenu from "../FilterMenu";
@@ -10,8 +9,6 @@ import "./styles.css";
 
 import RaisedButton from "material-ui/RaisedButton";
 import AppBar from "material-ui/AppBar";
-import SelectField from "material-ui/SelectField";
-import MenuItem from "material-ui/MenuItem";
 import Logo from "../../images/boomtown-logo.svg";
 
 class HeaderBar extends Component {

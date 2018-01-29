@@ -1,15 +1,9 @@
 import React, { Component } from "react";
-import handleChange from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getFilters } from "../../redux/modules/filtermenu";
-
-// imports for Material UI
-import RaisedButton from "material-ui/RaisedButton";
-import AppBar from "material-ui/AppBar";
 import SelectField from "material-ui/SelectField";
 import MenuItem from "material-ui/MenuItem";
-import Logo from "../../images/boomtown-logo.svg";
 
 class FilterMenu extends Component {
   state = {
@@ -18,8 +12,7 @@ class FilterMenu extends Component {
 
   handleChange = (event, index, values) => {
     this.setState({ values });
-    console.log({ values }); // log an array of the currently selected tags TODO: send this to redux store
-    this.props.dispatch(getFilters(values));
+    this.props.dispatch(getFilters(values)); // send the currently selected filters to the Redux store
   };
 
   menuItems(values) {
