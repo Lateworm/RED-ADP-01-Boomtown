@@ -14,8 +14,9 @@ import {
 } from "material-ui/Card";
 import RaisedButton from "material-ui/RaisedButton";
 
-const Items = ({ list }) => {
-  // begin default export
+const Items = ({ list, filters }) => {
+  console.log(filters);
+
   const masonryOptions = {
     originTop: true
   };

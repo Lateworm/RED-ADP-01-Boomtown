@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Items from "./Items";
 import { graphql } from "react-apollo";
+import { compose } from "react-apollo"; // https://www.apollographql.com/docs/react/basics/setup.html#compose
 import gql from "graphql-tag";
+import { connect } from "react-redux";
 
 class ItemsContainer extends Component {
   render() {
     const { loading, items } = this.props.data;
-    return loading ? <p>Loading...</p> : <Items list={items} />;
+    return loading ? (
+      <p>Loading...</p>
+    ) : (
+      <Items list={items} filters={this.props.filters} />
+    );
   }
 
   // static propTypes = {
@@ -44,6 +50,12 @@ const fetchItems = gql`
 `;
 // tags will need to be an array
 
-// connect ItemsContainer to the necessary keys from the Redux store and export the result
+const mapStateToProps = state => ({
+  filters: state.filters
+});
 
-export default graphql(fetchItems)(ItemsContainer);
+// export default graphql(fetchItems)(ItemsContainer);
+
+export default compose(graphql(fetchItems), connect(mapStateToProps))(
+  ItemsContainer
+);
