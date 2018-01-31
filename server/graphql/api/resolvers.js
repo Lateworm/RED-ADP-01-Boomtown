@@ -1,48 +1,46 @@
 const fetch = require("node-fetch");
 
-module.exports = app => {
-  const ITEMS_URL = `http://localhost:${app.get("JSON_PORT")}/items`;
-  const USERS_URL = `http://localhost:${app.get("JSON_PORT")}/users`;
-
+module.exports = ({
+  // destructuring makes it simpler to call these methods
+  jsonResource: { getUsers, getItem, getUser, getSharedItems }, // info to come from JSON
+  postgresResource: { getItems } // info to come from Postgres
+}) => {
   return {
     Query: {
       items() {
-        return fetch(ITEMS_URL).then(r => r.json());
+        return getItems();
       },
 
       users() {
-        return fetch(USERS_URL).then(r => r.json());
+        return getUsers();
       },
 
       userById(root, { id }) {
-        return fetch(`${USERS_URL}/${id}`).then(r => r.json());
+        return getUser();
       },
 
       itemById(root, { id }) {
-        return fetch(`${ITEMS_URL}/${id}`).then(r => r.json());
+        return getItem();
       }
     },
 
     Item: {
       itemowner(item) {
-        return fetch(`${USERS_URL}/${item.itemowner}`).then(r => r.json());
+        return getUser(item.itemowner);
       },
       borrower(item) {
-        return fetch(`${USERS_URL}/${item.borrower}`).then(r => r.json());
-      },
-      tags() {
-        return [];
+        // if (item.borrower) { TODO: checking if borrower here instead on in the component, should be more efficient
+        return getUser(item.borrower);
       },
       async tags(item) {
-        // TODO: Why do we have async here, but not for borrower and itemowner?
-        const res = await fetch(`${ITEMS_URL}/${item.id}`).then(r => r.json());
+        // const res = await fetch(`${ITEMS_URL}/${item.id}`).then(r => r.json());
         return item.tags;
       }
     },
 
     User: {
       shareditems(user) {
-        return fetch(`${ITEMS_URL}/?itemowner=${user.id}`).then(r => r.json());
+        return getSharedItems(user.id);
       }
     },
 
