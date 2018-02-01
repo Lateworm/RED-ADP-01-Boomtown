@@ -7,5 +7,6 @@ import authReducer from "./modules/auth";
 export default combineReducers({
   items: itemsReducer, // all items, as used on the homepage
   userItems: usersReducer, // items owned by a specific user, as used on the profile page
-  auth: authReducer
+  filters: filtersReducer, // the currently filters, as selected in the top bar
+  auth: authReducer // user authentication status
 });
