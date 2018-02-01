@@ -15,71 +15,73 @@ import {
 import RaisedButton from "material-ui/RaisedButton";
 
 const Items = ({ list, filters }) => {
-  console.log(filters);
+  Items.prototype = {
+    list: PropTypes.array.isRequired, // An array of object, each item is an object
+    filters: PropTypes.array.isRequired // filters = array of filter names
+  };
 
   const masonryOptions = {
     originTop: true
   };
-  // list = object containing all items
+
+  console.log(list);
 
   return (
-    <div className="masonrycontainer">
-      <Masonry options={masonryOptions}>
-        {list.map(item => (
-          <Card className="card" key={item.id}>
-            {item.borrower.fullname ? (
-              // if the item is lent out to someone print their name on the overlay
-              <CardMedia
-                className="card-media"
-                overlay={
-                  <CardTitle subtitle={`lent to ${item.borrower.fullname}`} />
-                }
-              >
-                <img src={item.imageurl} alt={item.title} />
-              </CardMedia>
-            ) : (
-              // else don't generate an overlay at all
-              <CardMedia className="card-media">
-                <img src={item.imageurl} alt={item.title} />
-              </CardMedia>
-            )}
-            <a href={"/profile/" + item.itemowner.id}>
-              {/* <a href={"/profile/" + item.itemowner.id}> */}
-              <CardHeader
-                title={item.itemowner.fullname}
-                subtitle={Moment(item.created).fromNow()}
-                avatar={
-                  <Gravatar className="photo" email={item.itemowner.email} />
-                }
-              />
-            </a>
-            <CardTitle title={item.title} subtitle={item.tags[0].title} />{" "}
-            {/* TODO: figure out how to render ALL tags.title if there are more than one.*/}
-            {/* TODO: comma-separate if multiple values */}
-            <CardText>{item.description}</CardText>
-            {item.borrower.id ? (
-              // if the item is lent out to someone, don't render a Borrow button
-              ""
-            ) : (
-              // if the item is not lent out, render a borrow button
-              <CardActions>
-                <RaisedButton
-                  backgroundColor="#263238"
-                  labelColor="#fff"
-                  label="Borrow"
-                  className="borrow-button"
-                />
-              </CardActions>
-            )}
-          </Card>
-        ))}
-      </Masonry>
-    </div>
+    <div>I need items!! Graaaaarghl!!!1!</div>
+    // temporarily disable everything so the component can render without errors.
+    // <div className="masonrycontainer">
+    //   <Masonry options={masonryOptions}>
+    //     {list.map(item => (
+    //       <Card className="card" key={item.id}>
+    //         {item.borrower.fullname ? (
+    //           // if the item is lent out to someone print their name on the overlay
+    //           <CardMedia
+    //             className="card-media"
+    //             overlay={
+    //               <CardTitle subtitle={`lent to ${item.borrower.fullname}`} />
+    //             }
+    //           >
+    //             <img src={item.imageurl} alt={item.title} />
+    //           </CardMedia>
+    //         ) : (
+    //           // else don't generate an overlay at all
+    //           <CardMedia className="card-media">
+    //             <img src={item.imageurl} alt={item.title} />
+    //           </CardMedia>
+    //         )}
+    //         <a href={"/profile/" + item.itemowner.id}>
+    //           {/* <a href={"/profile/" + item.itemowner.id}> */}
+    //           <CardHeader
+    //             title={item.itemowner.fullname}
+    //             subtitle={Moment(item.created).fromNow()}
+    //             avatar={
+    //               <Gravatar className="photo" email={item.itemowner.email} />
+    //             }
+    //           />
+    //         </a>
+    //         <CardTitle title={item.title} subtitle={item.tags[0].title} />{" "}
+    //         {/* TODO: figure out how to render ALL tags.title if there are more than one.*/}
+    //         {/* TODO: comma-separate if multiple values */}
+    //         <CardText>{item.description}</CardText>
+    //         {item.borrower.id ? (
+    //           // if the item is lent out to someone, don't render a Borrow button
+    //           ""
+    //         ) : (
+    //           // if the item is not lent out, render a borrow button
+    //           <CardActions>
+    //             <RaisedButton
+    //               backgroundColor="#263238"
+    //               labelColor="#fff"
+    //               label="Borrow"
+    //               className="borrow-button"
+    //             />
+    //           </CardActions>
+    //         )}
+    //       </Card>
+    //     ))}
+    //   </Masonry>
+    // </div>
   );
-};
-
-Items.prototype = {
-  list: PropTypes.array.isRequired
 };
 
 export default Items;
