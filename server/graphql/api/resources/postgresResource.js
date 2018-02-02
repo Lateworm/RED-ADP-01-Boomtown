@@ -1,5 +1,7 @@
 const { Client } = require("pg");
 
+const tq = tags => tags.map((id, i) => `($1, $${i + 2})`).join(", ");
+
 module.exports = async app => {
   const client = new Client({
     user: app.get("PGUSER"),
@@ -61,15 +63,41 @@ module.exports = async app => {
     getTags(itemid) {
       return;
       // return new Promise((resolve, reject) => {
-      // 	client.query("SELECT * FROM ",
+      // 	client.query("SELECT * FROM tags",
       // 		inner join itemtags on itemtags.tagid = tags.id
       // 		where itemtags.itemid = $1, [itemid], (err, data) => {
+      //	resolve(data.rows);
       // 	});
       // });
     },
 
-    createItem(id) {
-      return;
+    async createItem({ title, description, imageurl, itemowner, tags }) {
+      const itemValues = [title, description, imageurl, itemowner];
+
+      // query expects array of tag id
+      tags = tags.map(t => t.id);
+
+      const itemInsertQuery = `INSERT INTO items(title, description, imageurl, itemowner)
+											VALUES($1, $2, $3, $4) RETURNING *`;
+
+      try {
+        await client.query("BEGIN");
+        const itemResults = await client.query(itemInsertQuery, itemValues);
+
+        const tagsInsertQuery = `INSERT INTO itemtags(itemid, tagid)
+																		VALUES ${tq(tags)}`;
+
+        const tagsResult = await client.query(tagsInsertQuery, [
+          itemResults.rows[0].id,
+          ...tags
+        ]);
+
+        await client.query("COMMIT");
+        return itemResults.rows[0];
+      } catch (e) {
+        await client.query("ROLLBACK");
+        throw e;
+      }
     },
 
     updateItem(id) {

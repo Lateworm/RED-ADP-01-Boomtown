@@ -8,7 +8,8 @@ module.exports = ({
     getItems,
     getItem,
     getSharedItems,
-    getBorrowedItems
+    getBorrowedItems,
+    createItem
   } // info to come from Postgres
 }) => {
   return {
@@ -54,21 +55,15 @@ module.exports = ({
     },
 
     Mutation: {
+      createNewItem(root, { newItem }) {
+        // newItem is destructured fromt eh argument
+        console.log(newItem);
+        return createItem(newItem);
+      },
+
       updateItem(root, { updatedItem: { borrower } }) {
         console.log({ borrower });
         return { borrower };
-      },
-
-      addItem(
-        root,
-        { newItem: { itemowner, imageurl, title, description, tags } }
-      ) {
-        // TODO: Get this working in graphiQL. The itemowner is gumming up the works.
-        // TODO: resolve new items to the database
-        // TODO: Must return a new Item thanks to our mutation schema
-        // access properties of newItem with dot notation
-        console.log({ title }); // will appear in the terminal where Apollo server is running
-        return { itemowner, imageurl, title, description, tags };
       }
     }
   };

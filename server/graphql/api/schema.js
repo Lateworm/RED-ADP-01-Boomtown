@@ -26,8 +26,8 @@ module.exports = `
 	}
 
 	input AddItemInput {
-		itemowner: ID
 		imageurl: String
+		itemowner: ID
 		title: String
 		description: String
 		tags: [TagInput]
@@ -47,7 +47,7 @@ module.exports = `
 
 	type Mutation {
 		updateItem(updatedItem: UpdateItemInput): Item
-		addItem(newItem: AddItemInput): Item
+		createNewItem(newItem: AddItemInput): Item
 	}
 
 	type Query {
