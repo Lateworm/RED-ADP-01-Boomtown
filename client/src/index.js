@@ -15,10 +15,13 @@ import { userLoading } from "./redux/modules/auth";
 
 // import React components
 import Layout from "./components/Layout";
+
+// import component containers
+import Items from "./containers/Items";
 import Login from "./containers/Login";
 import NotFound from "./containers/NotFound";
-import Items from "./containers/Items";
 import Profile from "./containers/Profile";
+import Share from "./containers/Share";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -56,6 +59,7 @@ const Boomtown = () => (
               <Route exact path="/" component={Login} />
               <PrivateRoute exact path="/items" component={Items} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/share" component={Share} />
 
               <Route exact path="/profile/:userid" component={Profile} />
 

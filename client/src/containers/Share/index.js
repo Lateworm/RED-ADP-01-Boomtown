@@ -1,5 +1,5 @@
-import ShareContainer from './ShareContainer';
-import Login from './Share';
+import ShareContainer from "./ShareContainer";
+import Share from "./Share";
 
 export { Share };
 export default ShareContainer;
