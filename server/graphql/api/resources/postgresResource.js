@@ -52,23 +52,31 @@ module.exports = async app => {
     },
 
     getItem(id) {
-      return;
-      // return new Promise((resolve, reject) => {
-      //   client.query("SELECT * FROM items WHERE id = $1", [id], (err, data) => {
-      //     resolve(data.rows);
-      //   });
-      // });
+      return new Promise((resolve, reject) => {
+        client.query("SELECT * FROM items WHERE id = $1", [id], (err, data) => {
+          resolve(data.rows);
+        });
+      });
     },
 
     getTags(itemid) {
-      return;
-      // return new Promise((resolve, reject) => {
-      // 	client.query("SELECT * FROM tags",
-      // 		inner join itemtags on itemtags.tagid = tags.id
-      // 		where itemtags.itemid = $1, [itemid], (err, data) => {
-      //	resolve(data.rows);
-      // 	});
-      // });
+      return new Promise((resolve, reject) => {
+        client.query(
+          `SELECT * FROM tags
+           inner join itemtags on itemtags.tagid = tags.id 
+           WHERE itemtags.itemid = $1
+           `,
+          [itemid],
+          (err, data) => {
+            if (err) {
+              reject(err);
+              return;
+            }
+            console.log(data.rows);
+            resolve(data.rows);
+          }
+        );
+      });
     },
 
     async createItem({ title, description, imageurl, itemowner, tags }) {
