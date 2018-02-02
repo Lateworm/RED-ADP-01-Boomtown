@@ -41,7 +41,7 @@ module.exports = ({
       },
       async tags(item) {
         // const res = await fetch(`${ITEMS_URL}/${item.id}`).then(r => r.json());
-        return item.tags;
+        return await getTags(item.id);
       }
     },
 
