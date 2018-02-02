@@ -6,8 +6,7 @@ module.exports = `
 		email: String
 		bio: String
 		shareditems: [Item]
-		borrowedItems: [Item]
-		imageurl: String
+		borroweditems: [Item]
 	}
 
 	type Item {
@@ -54,8 +53,8 @@ module.exports = `
 	type Query {
 		items: [Item]
 		users: [User]
-		userById(id: ID): User
-		itemById(id: ID): Item
+		user(id: ID): User
+		item(id: ID): Item
 	}
 
 `;

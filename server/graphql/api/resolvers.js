@@ -2,8 +2,14 @@ const fetch = require("node-fetch");
 
 module.exports = ({
   // destructuring makes it simpler to call these methods
-  jsonResource: { getUsers, getItem, getUser, getSharedItems }, // info to come from JSON
-  postgresResource: { getItems } // info to come from Postgres
+  firebaseResource: { getUsers, getUser }, // info to come from firebase
+  postgresResource: {
+    getTags,
+    getItems,
+    getItem,
+    getSharedItems,
+    getBorrowedItems
+  } // info to come from Postgres
 }) => {
   return {
     Query: {
@@ -11,16 +17,16 @@ module.exports = ({
         return getItems();
       },
 
+      item(root, { id }) {
+        return getItem();
+      },
+
       users() {
         return getUsers();
       },
 
-      userById(root, { id }) {
-        return getUser();
-      },
-
-      itemById(root, { id }) {
-        return getItem();
+      user(root, { id }) {
+        return getUser(id);
       }
     },
 
@@ -29,7 +35,7 @@ module.exports = ({
         return getUser(item.itemowner);
       },
       borrower(item) {
-        // if (item.borrower) { TODO: checking if borrower here instead on in the component, should be more efficient
+        // if (item.borrower) { TODO: check if borrower here instead of in the component; should be more efficient
         return getUser(item.borrower);
       },
       async tags(item) {
@@ -41,6 +47,9 @@ module.exports = ({
     User: {
       shareditems(user) {
         return getSharedItems(user.id);
+      },
+      borroweditems(user) {
+        return getBorrowedItems(user.id);
       }
     },
 

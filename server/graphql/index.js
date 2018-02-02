@@ -1,15 +1,15 @@
-const config = require("./config");
+const config = require("./config"); // config environment variables
 const express = require("express");
 const app = express();
 config(app);
 
-const cors = require("cors");
+const cors = require("cors"); // cross-origin resource sharing
 const bodyParser = require("body-parser");
 
-let jsonResource = require("./api/resources/jsonResource")(app);
 let firebaseResource = require("./api/resources/firebaseResource")(app);
-
 let postgresResource = require("./api/resources/postgresResource");
+postgresResource(app).then(pgResource => start(pgResource));
+
 const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
 
 const typeDefs = require("./api/schema");
@@ -17,14 +17,12 @@ const initResolvers = require("./api/resolvers");
 
 const { makeExecutableSchema } = require("graphql-tools");
 
-postgresResource(app).then(pgResource => start(pgResource));
-
 function start(postgresResource) {
   const schema = makeExecutableSchema({
     typeDefs,
     resolvers: initResolvers({
-      jsonResource,
-      postgresResource // es2015 object property shorthand, same as postgresResource: postgresresource
+      postgresResource, // ES2015 object property shorthand, functionally same as {postgresResource: postgresResource}
+      firebaseResource
     })
   });
 

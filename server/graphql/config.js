@@ -8,6 +8,14 @@ module.exports = app => {
 
   // Express config
   app.set("PORT", process.env.PORT || "3002");
-  // Temporary JSON dev server
-  app.set("JSON_PORT", "4000");
+
+  // Firebase config
+  app.set("FIREBASE_CONFIG", {
+    apiKey: "AIzaSyBL4fXA3Xdr96eFPxQNwkLLX_BHYNEWT2Q",
+    authDomain: "boomtown-8c56c.firebaseapp.com",
+    databaseURL: "https://boomtown-8c56c.firebaseio.com",
+    projectId: "boomtown-8c56c",
+    storageBucket: "boomtown-8c56c.appspot.com",
+    messagingSenderId: "704806820261"
+  });
 };
