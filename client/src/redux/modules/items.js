@@ -10,9 +10,6 @@ const getItemsLoading = () => ({ type: GET_ITEMS_LOADING });
 const getItems = items => ({ type: GET_ITEMS, payload: items });
 const getItemsError = error => ({ type: GET_ITEMS_ERROR, payload: error });
 
-// TODO: bring in the actual filter values from the redux store
-const sampleTags = "Household Items,Recreational Equipment";
-
 // Async action creator
 
 const ITEMS_URL = "http://localhost:4000/items";
@@ -60,7 +57,7 @@ export default (
       "Recreational Equipment", // 5
       "Sporting Goods", // 6
       "Tools" // 7
-    ]
+    ] // TODO: pull this data from Postgres and remove it from here.
   },
   action
 ) => {
