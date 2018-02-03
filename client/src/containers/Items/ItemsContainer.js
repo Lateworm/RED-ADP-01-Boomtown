@@ -7,55 +7,55 @@ import gql from "graphql-tag";
 import { connect } from "react-redux";
 
 class ItemsContainer extends Component {
-  render() {
-    const { loading, items } = this.props.data;
-    return loading ? (
-      <p>Loading...</p>
-    ) : (
-      <Items list={items} filters={this.props.filters} />
-    );
-  }
+	render() {
+		const { loading, items } = this.props.data;
+		return loading ? (
+			<p>Loading...</p>
+		) : (
+			<Items list={items} filters={this.props.filters} />
+		);
+	}
 
-  // static propTypes = {
-  // isLoading: PropTypes.bool.isRequired, // TODO: make sure isLoading is always defined
-  // itemsData: PropTypes.array.isRequired, // An array of object, each item is an object
-  // error: PropTypes.string.isRequired
-  // };
+	static propTypes = {
+		isLoading: PropTypes.bool.isRequired, // TODO: make sure isLoading is always defined
+		list: PropTypes.array.isRequired, // An array of object, each item is an object
+		error: PropTypes.string.isRequired
+	};
 } // end class ItemsContainer
 
 const fetchItems = gql`
-  query {
-    items {
-      available
-      borrower {
-        id
-        fullname
-      }
-      description
-      id
-      imageurl
-      itemowner {
-        bio
-        email
-        fullname
-        id
-      }
-      tags {
-        id
-        title
-      }
-      title
-    }
-  }
+	query {
+		items {
+			available
+			borrower {
+				id
+				fullname
+			}
+			description
+			id
+			imageurl
+			itemowner {
+				bio
+				email
+				fullname
+				id
+			}
+			tags {
+				id
+				title
+			}
+			title
+		}
+	}
 `;
 // tags will need to be an array
 
 const mapStateToProps = state => ({
-  filters: state.filters
+	filters: state.filters
 });
 
 // export default graphql(fetchItems)(ItemsContainer);
 
 export default compose(graphql(fetchItems), connect(mapStateToProps))(
-  ItemsContainer
+	ItemsContainer
 );

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import Grumpycat from "../../images/grumpycat.svg";
-import './styles.css'
+import "./styles.css";
 
 export default class NotFoundContainer extends Component {
 	render() {
