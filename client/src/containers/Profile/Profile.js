@@ -103,8 +103,8 @@ const Profile = ({ user, items }) => {
 };
 
 Profile.propTypes = {
-	items: PropTypes.array.isRequired,
-	user: PropTypes.string.isRequired
+	user: PropTypes.object.isRequired,
+	items: PropTypes.array.isRequired
 };
 
 export default Profile;
