@@ -19,39 +19,43 @@ import {
 import RaisedButton from "material-ui/RaisedButton";
 import Paper from "material-ui/Paper";
 
-const Profile = ({ list, userid }) => {
-	// list = array of all items to display
+const Profile = ({ items, user }) => {
+	// items = array of all items to display
 	// userInfo = object of data about the user being profiled
 
 	const masonryOptions = {
 		originTop: true
 	};
 
-	console.log("Logging prop 'list': ", list);
-	console.log("Logging prop 'userid': ", userid);
+	console.log("Logging prop 'items': ", items);
+	console.log("Logging prop 'userid': ", user);
 
 	return (
-		<div>
+		<div className="masonrycontainer">
 			<Paper
 				className="profile-paper"
 				zDepth={1}
 				children={
 					<div className="profile-div">
 						<div>
-							<h1>User Name</h1>
-							<h2>User Bio</h2>
+							<h1>{user.fullname}</h1>
+							<h2>{user.bio}</h2>
 						</div>
-						<div>
-							<h3>Items shared</h3>
-							<h3>X Items borrowed</h3>
-							<Gravatar size={180} className="photo" email="User Email" />
+						<div className="profile-content">
+							<div>
+								<h3>{items.length}</h3>
+								<h2>Items shared</h2>
+								<h3>{user.borroweditems.length}</h3>
+								<h2>Items borrowed</h2>{" "}
+							</div>
+							<Gravatar size={180} className="photo" email={user.email} />
 						</div>
 					</div>
 				}
 			/>
 
 			<Masonry options={masonryOptions}>
-				{list.map(item => (
+				{items.map(item => (
 					<Card className="card" key={item.id}>
 						{item.borrower ? (
 							// if the item is lent out to someone print their name on the overlay
@@ -102,7 +106,7 @@ const Profile = ({ list, userid }) => {
 };
 
 Profile.prototype = {
-	list: PropTypes.array.isRequired,
+	items: PropTypes.array.isRequired,
 	userid: PropTypes.string.isRequired
 };
 

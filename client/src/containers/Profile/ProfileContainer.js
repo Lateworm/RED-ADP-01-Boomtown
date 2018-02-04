@@ -10,7 +10,7 @@ class ProfileContainer extends Component {
 		return loading ? (
 			<p>Loading...</p>
 		) : (
-			<Profile list={user.shareditems} userid={user} />
+			<Profile items={user.shareditems} user={user} />
 		);
 	}
 
@@ -26,6 +26,7 @@ const fetchItems = gql`
 		user(id: $id) {
 			fullname
 			bio
+			email
 			shareditems {
 				available
 				borrower {
@@ -45,6 +46,9 @@ const fetchItems = gql`
 					title
 				}
 				title
+			}
+			borroweditems {
+				id
 			}
 		}
 	}
