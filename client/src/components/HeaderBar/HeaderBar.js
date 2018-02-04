@@ -14,8 +14,8 @@ import AppBar from "material-ui/AppBar";
 import Logo from "../../images/boomtown-logo.svg";
 
 class HeaderBar extends Component {
-	logOut = e => {
-		e.preventDefault();
+	// https://firebase.google.com/docs/auth/web/password-auth?authuser=0
+	logOut = () => {
 		firebase.auth().signOut();
 	};
 
