@@ -31,46 +31,43 @@ import client from "./config/apolloClient";
 
 let gotProfile = false;
 store.subscribe(() => {
-  const values = store.getState();
-  if (!values.authentication !== "LOADING_USER" && !gotProfile) {
-    gotProfile = true;
-    store.dispatch(userLoading(false));
-    // there's 3 states that the authentication variable can be in: loading, true, or false.
-  }
+	const values = store.getState();
+	if (!values.authentication !== "LOADING_USER" && !gotProfile) {
+		gotProfile = true;
+		store.dispatch(userLoading(false));
+		// there's 3 states that the authentication variable can be in: loading, true, or false.
+	}
 });
 
 firebaseAuth.onAuthStateChanged(user => {
-  console.log("checking for user...");
+	console.log("checking for user...");
 
-  if (user) {
-    store.dispatch(updateAuthState(true));
-  } else {
-    store.dispatch(updateAuthState(false));
-  }
+	if (user) {
+		store.dispatch(updateAuthState(true));
+	} else {
+		store.dispatch(updateAuthState(false));
+	}
 });
 
 const Boomtown = () => (
-  <MuiThemeProvider muiTheme={muiTheme}>
-    <ApolloProvider client={client}>
-      <Provider store={store}>
-        <Router>
-          <Layout>
-            <Switch>
-              <Route exact path="/" component={Login} />
-              <PrivateRoute exact path="/items" component={Items} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/share" component={Share} />
-
-              <Route exact path="/profile/:userid" component={Profile} />
-
-              {/* <Route exact path="/share" component={} /> */}
-              <Route path="*" component={NotFound} />
-            </Switch>
-          </Layout>
-        </Router>
-      </Provider>
-    </ApolloProvider>
-  </MuiThemeProvider>
+	<MuiThemeProvider muiTheme={muiTheme}>
+		<ApolloProvider client={client}>
+			<Provider store={store}>
+				<Router>
+					<Layout>
+						<Switch>
+							<Route exact path="/" component={Login} />
+							<Route exact path="/login" component={Login} />
+							<PrivateRoute exact path="/items" component={Items} />
+							<PrivateRoute exact path="/share" component={Share} />
+							<PrivateRoute exact path="/profile/:userid" component={Profile} />
+							<PrivateRoute path="*" component={NotFound} />
+						</Switch>
+					</Layout>
+				</Router>
+			</Provider>
+		</ApolloProvider>
+	</MuiThemeProvider>
 );
 
 ReactDOM.render(<Boomtown />, document.getElementById("root"));

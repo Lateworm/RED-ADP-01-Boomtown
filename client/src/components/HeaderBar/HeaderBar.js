@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import FilterMenu from "../FilterMenu";
 
+import firebase from "firebase";
+
 import "./styles.css";
 
 // imports for Material UI
@@ -12,9 +14,10 @@ import AppBar from "material-ui/AppBar";
 import Logo from "../../images/boomtown-logo.svg";
 
 class HeaderBar extends Component {
-	// static propTypes = {
-	// 	tags: PropTypes. ? .isRequired TODO: Finish this PropTypes Declaration
-	// }
+	logOut = e => {
+		e.preventDefault();
+		firebase.auth().signOut();
+	};
 
 	render() {
 		return (
@@ -36,6 +39,7 @@ class HeaderBar extends Component {
 							label="Logout"
 							backgroundColor="#263238"
 							labelColor="#fff"
+							onClick={this.logOut}
 						/>
 					</span>
 				}
