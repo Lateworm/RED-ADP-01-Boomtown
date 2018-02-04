@@ -12,40 +12,40 @@ import AppBar from "material-ui/AppBar";
 import Logo from "../../images/boomtown-logo.svg";
 
 class HeaderBar extends Component {
-  // static propTypes = {
-  // 	tags: PropTypes. ? .isRequired TODO: Finish this PropTypes Declaration
-  // }
+	// static propTypes = {
+	// 	tags: PropTypes. ? .isRequired TODO: Finish this PropTypes Declaration
+	// }
 
-  render() {
-    return (
-      <AppBar
-        className="navbar"
-        iconElementLeft={
-          <div>
-            <a href="/">
-              <img className="navbar-logo" src={Logo} alt="The Boomtown Logo" />
-            </a>
-          </div>
-        }
-        title={<FilterMenu />}
-        iconElementRight={
-          <span>
-            <RaisedButton label="My Profile" primary={true} />
-            <RaisedButton
-              className="navbar-logout-button"
-              label="Logout"
-              backgroundColor="#263238"
-              labelColor="#fff"
-            />
-          </span>
-        }
-      />
-    );
-  }
+	render() {
+		return (
+			<AppBar
+				className="navbar"
+				iconElementLeft={
+					<div>
+						<a href="/items">
+							<img className="navbar-logo" src={Logo} alt="The Boomtown Logo" />
+						</a>
+					</div>
+				}
+				title={<FilterMenu />}
+				iconElementRight={
+					<span>
+						<RaisedButton label="My Profile" primary={true} />
+						<RaisedButton
+							className="navbar-logout-button"
+							label="Logout"
+							backgroundColor="#263238"
+							labelColor="#fff"
+						/>
+					</span>
+				}
+			/>
+		);
+	}
 }
 
 const mapStateToProps = state => ({
-  tags: state.items.tags
+	tags: state.items.tags
 });
 
 export default connect(mapStateToProps)(HeaderBar);
