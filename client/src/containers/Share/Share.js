@@ -5,8 +5,8 @@ import Placeholder from "../../images/item-placeholder.jpg";
 import Moment from "moment";
 import Gravatar from "react-gravatar";
 import FilterMenu from "../../components/FilterMenu";
-
 import firebase from "firebase";
+import { firebaseAuth } from "../../config/firebaseConfig";
 
 // import Material UI components
 import { Step, Stepper, StepLabel, StepContent } from "material-ui/Stepper";
@@ -26,11 +26,18 @@ import TextField from "material-ui/TextField";
 
 class Share extends React.Component {
 	state = {
+		// state for Stepper
 		finished: false,
-		stepIndex: 0
+		stepIndex: 0,
+		// state for the new item
+		newTitle: "Amazing Item Title",
+		newDescription: "Profound item description.",
+		newImageurl: "",
+		newTags: "" // prob needs to be an array?
 	};
 
-	// Default stepper interaction handlers from http://www.material-ui.com/#/components/stepper
+	// Handler for stepper interaction
+	// http://www.material-ui.com/#/components/stepper
 	handleNext = () => {
 		const { stepIndex } = this.state;
 		this.setState({
@@ -69,12 +76,11 @@ class Share extends React.Component {
 		);
 	}
 
-	// Handlers for custom functionality
+	// Handler for image upload functionality
 	// https://time2hack.com/2017/10/upload-files-to-firebase-storage-with-javascript/
-
-	handleSelectClick = () => document.getElementById("imageInput").click();
-
 	handleImageUpload = input => {
+		const { newImageurl } = this.state;
+
 		console.log(input.target.files[0].name);
 		// create firebase storage reference
 		const ref = firebase.storage().ref();
@@ -89,22 +95,36 @@ class Share extends React.Component {
 			.then(snapshot => {
 				const url = snapshot.downloadURL;
 				console.log(url);
-				document.querySelector("#someImageTagID").src = url;
+				this.setState({ newImageurl: url });
 			})
 			.catch(error => {
 				console.error(error);
 			});
 	};
 
+	// Redirect a click on the 'Select an Image' button to act as a click on the hidden image input
+	handleSelectClick = () => document.getElementById("imageInput").click();
+
 	render() {
-		const { finished, stepIndex } = this.state;
+		const {
+			finished,
+			stepIndex,
+			newTitle,
+			newDescription,
+			newImageurl,
+			newTags
+		} = this.state;
 
 		return (
 			<div>
+				{/* Card display */}
 				<div>
 					<Card className="card">
 						<CardMedia className="card-media">
-							<img src={Placeholder} alt="placeholder for uploaded photo" />
+							<img
+								src={newImageurl ? newImageurl : Placeholder}
+								alt="Image of new shared item"
+							/>
 						</CardMedia>
 
 						<CardHeader
@@ -114,10 +134,8 @@ class Share extends React.Component {
 								<Gravatar className="photo" email="item.itemowner.email" />
 							}
 						/>
-
-						<CardTitle title="Amazing Item Title" />
-
-						<CardText>Profound item description.</CardText>
+						<CardTitle title={newTitle} />
+						<CardText>{newDescription}</CardText>
 					</Card>
 				</div>
 
