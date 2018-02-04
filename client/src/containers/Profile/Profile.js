@@ -19,16 +19,13 @@ import {
 import RaisedButton from "material-ui/RaisedButton";
 import Paper from "material-ui/Paper";
 
-const Profile = ({ items, user }) => {
+const Profile = ({ user, items }) => {
+	// user = object of all data from the query in ProfileContianer
 	// items = array of all items to display
-	// userInfo = object of data about the user being profiled
 
 	const masonryOptions = {
 		originTop: true
 	};
-
-	console.log("Logging prop 'items': ", items);
-	console.log("Logging prop 'userid': ", user);
 
 	return (
 		<div className="masonrycontainer">
@@ -105,9 +102,9 @@ const Profile = ({ items, user }) => {
 	);
 };
 
-Profile.prototype = {
+Profile.propTypes = {
 	items: PropTypes.array.isRequired,
-	userid: PropTypes.string.isRequired
+	user: PropTypes.string.isRequired
 };
 
 export default Profile;

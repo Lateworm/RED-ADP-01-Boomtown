@@ -14,13 +14,12 @@ class ProfileContainer extends Component {
 		);
 	}
 
-	// static propTypes = {
-	// isLoading: PropTypes.bool.isRequired, // TODO: make sure isLoading is always defined
-	// itemsData: PropTypes.array.isRequired, // An array of object, each item is an object
-	// error: PropTypes.string.isRequired
-	// };
+	static propTypes = {
+		data: PropTypes.object.isRequired
+	};
 } // end class ProfileContainer
 
+// GraphQL query - the returned data becomes the 'user' in Profile.js
 const fetchItems = gql`
 	query getUser($id: ID) {
 		user(id: $id) {
@@ -52,12 +51,7 @@ const fetchItems = gql`
 			}
 		}
 	}
-`; // this becomes the prop 'list' in Profile.js
-
-// The old way - refer to this to help get user info back
-// const mapStatetoProps = state => ({
-//   userInfo: state.userItems.userInfo
-// });
+`;
 
 export default graphql(fetchItems, {
 	options: ({ match }) => ({ variables: { id: match.params.userid } })
