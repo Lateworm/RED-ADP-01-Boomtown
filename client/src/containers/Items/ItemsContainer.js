@@ -17,9 +17,9 @@ class ItemsContainer extends Component {
 	}
 
 	static propTypes = {
-		isLoading: PropTypes.bool.isRequired, // TODO: make sure isLoading is always defined
-		list: PropTypes.array.isRequired, // An array of object, each item is an object
-		error: PropTypes.string.isRequired
+		filters: PropTypes.object.isRequired, // TODO: make sure isLoading is always defined
+		data: PropTypes.object.isRequired // An array of object, each item is an object
+		// error: PropTypes.string.isRequired
 	};
 } // end class ItemsContainer
 
@@ -48,13 +48,10 @@ const fetchItems = gql`
 		}
 	}
 `;
-// tags will need to be an array
 
 const mapStateToProps = state => ({
 	filters: state.filters
 });
-
-// export default graphql(fetchItems)(ItemsContainer);
 
 export default compose(graphql(fetchItems), connect(mapStateToProps))(
 	ItemsContainer
