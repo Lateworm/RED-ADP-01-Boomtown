@@ -15,11 +15,11 @@ import { userLoading } from "./redux/modules/auth";
 
 // import React components
 import Layout from "./components/Layout";
+import NotFound from "./components/NotFound";
 
 // import component containers
 import Items from "./containers/Items";
 import Login from "./containers/Login";
-import NotFound from "./containers/NotFound";
 import Profile from "./containers/Profile";
 import Share from "./containers/Share";
 
@@ -35,7 +35,7 @@ store.subscribe(() => {
 	if (!values.authentication !== "LOADING_USER" && !gotProfile) {
 		gotProfile = true;
 		store.dispatch(userLoading(false));
-		// there's 3 states that the authentication variable can be in: loading, true, or false.
+		// there're 3 states that the authentication variable can be in: loading, true, or false.
 	}
 });
 

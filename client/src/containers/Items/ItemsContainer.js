@@ -19,7 +19,6 @@ class ItemsContainer extends Component {
 	static propTypes = {
 		filters: PropTypes.object.isRequired, // TODO: make sure isLoading is always defined
 		data: PropTypes.object.isRequired // An array of object, each item is an object
-		// error: PropTypes.string.isRequired
 	};
 } // end class ItemsContainer
 

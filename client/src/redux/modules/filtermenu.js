@@ -9,17 +9,17 @@ export const getFilters = filters => ({ type: GET_FILTERS, payload: filters });
 // Reducer
 
 export default (
-  state = {
-    filter: []
-  },
-  action
+	state = {
+		filter: []
+	},
+	action
 ) => {
-  switch (action.type) {
-    case GET_FILTERS: {
-      return { ...state, filter: action.payload };
-    }
+	switch (action.type) {
+	case GET_FILTERS: {
+		return { ...state, filter: action.payload };
+	}
 
-    default:
-      return state;
-  }
+	default:
+		return state;
+	}
 };

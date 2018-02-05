@@ -36,11 +36,10 @@ module.exports = ({
         return getUser(item.itemowner);
       },
       borrower(item) {
-        // if (item.borrower) { TODO: check if borrower here instead of in the component; should be more efficient
+        // TODO: check if (item.borrower) here instead of in the component; should be more efficient
         return getUser(item.borrower);
       },
       async tags(item) {
-        // const res = await fetch(`${ITEMS_URL}/${item.id}`).then(r => r.json());
         return await getTags(item.id);
       }
     },

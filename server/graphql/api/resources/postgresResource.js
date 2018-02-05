@@ -13,11 +13,6 @@ module.exports = async app => {
 
   await client.connect();
 
-  // test query
-  // client.query("SELECT * FROM items", (err, res) => {
-  //   console.log(err, res);
-  // });
-
   return {
     getSharedItems(userid) {
       return new Promise((resolve, reject) => {
