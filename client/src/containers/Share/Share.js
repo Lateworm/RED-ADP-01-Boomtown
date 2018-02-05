@@ -7,6 +7,7 @@ import Gravatar from "react-gravatar";
 import FilterMenu from "../../components/FilterMenu";
 import firebase from "firebase";
 import { firebaseAuth } from "../../config/firebaseConfig";
+import { connect } from "react-redux";
 
 // import Material UI components
 import { Step, Stepper, StepLabel, StepContent } from "material-ui/Stepper";
@@ -32,8 +33,7 @@ class Share extends React.Component {
 		// state for the new item
 		newTitle: "Amazing Item Title",
 		newDescription: "Profound item description.",
-		newImageurl: "",
-		newTags: "" // prob needs to be an array?
+		newImageurl: ""
 	};
 
 	// Handler for stepper interaction
@@ -125,6 +125,8 @@ class Share extends React.Component {
 			newTags
 		} = this.state;
 
+		console.log(this.props.filter);
+
 		return (
 			<div>
 				{/* Card display */}
@@ -138,10 +140,14 @@ class Share extends React.Component {
 						</CardMedia>
 
 						<CardHeader
-							title="Usery McUserface"
-							subtitle="Moment(item.created).fromNow()"
+							subtitle={Moment().fromNow()}
 							avatar={
-								<Gravatar className="photo" email="item.itemowner.email" />
+								<Gravatar
+									className="photo"
+									email={
+										firebaseAuth.currentUser && firebaseAuth.currentUser.email
+									}
+								/>
 							}
 						/>
 						<CardTitle title={newTitle} />
@@ -221,4 +227,8 @@ class Share extends React.Component {
 	}
 }
 
-export default Share;
+const mapStateToProps = state => ({
+	filter: state.filters.filter
+});
+
+export default connect(mapStateToProps)(Share);
