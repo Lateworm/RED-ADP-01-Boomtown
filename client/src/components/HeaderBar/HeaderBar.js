@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import FilterMenu from "../FilterMenu";
+import { Link } from "react-router-dom";
 
 import firebase from "firebase";
+import { firebaseAuth } from "../../config/firebaseConfig";
 
 import "./styles.css";
 
@@ -33,7 +35,11 @@ class HeaderBar extends Component {
 				title={<FilterMenu />}
 				iconElementRight={
 					<span>
-						<RaisedButton label="My Profile" primary={true} />
+						{firebaseAuth.currentUser ? (
+							<Link to={`/profile/${firebaseAuth.currentUser.uid}`}>
+								<RaisedButton label="My Profile" primary={true} />
+							</Link>
+						) : null}
 						<RaisedButton
 							className="navbar-logout-button"
 							label="Logout"
