@@ -45,12 +45,22 @@ class Share extends React.Component {
 			finished: stepIndex >= 2
 		});
 	};
+
 	handlePrev = () => {
 		const { stepIndex } = this.state;
 		if (stepIndex > 0) {
 			this.setState({ stepIndex: stepIndex - 1 });
 		}
 	};
+
+	handleUpdateTitle = e => {
+		this.setState({ newTitle: e.target.value });
+	};
+
+	handleUpdateDescription = e => {
+		this.setState({ newDescription: e.target.value });
+	};
+
 	renderStepActions(step) {
 		const { stepIndex } = this.state;
 		return (
@@ -170,9 +180,16 @@ class Share extends React.Component {
 									Folks need to know what you're sharing. Give them a clue by
 									adding a title & description.
 								</p>
-								<TextField hintText="Title" />
+
+								<TextField hintText="Title" onChange={this.handleUpdateTitle} />
+
 								<br />
-								<TextField hintText="Description" />
+
+								<TextField
+									hintText="Description"
+									onChange={this.handleUpdateDescription}
+								/>
+
 								{this.renderStepActions(1)}
 							</StepContent>
 						</Step>
