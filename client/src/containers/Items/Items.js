@@ -73,7 +73,10 @@ const Items = ({ list, filter }) => {
 												}
 											/>
 										</a>
-										<CardTitle title={item.title} subtitle={item.tags[0].title} />{" "}
+										<CardTitle
+											title={item.title}
+											subtitle={item.tags.map(tag => tag.title).join(", ")}
+										/>{" "}
 										{/* TODO: figure out how to render ALL tags.title if there are more than one.*/}
 										{/* TODO: comma-separate if multiple values */}
 										<CardText>{item.description}</CardText>
