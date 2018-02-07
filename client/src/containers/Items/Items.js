@@ -52,13 +52,12 @@ const Items = ({ list, filter }) => {
 											<img src={item.imageurl} alt={item.title} />
 										</CardMedia>
 									) : (
-										// else don't generate an overlay at all
+										// if the items is not lent out, don't generate an overlay
 										<CardMedia className="card-media">
 											<img src={item.imageurl} alt={item.title} />
 										</CardMedia>
 									)}
 									<a href={"/profile/" + item.itemowner.id}>
-										{/* <a href={"/profile/" + item.itemowner.id}> */}
 										<CardHeader
 											title={item.itemowner.fullname}
 											subtitle={Moment(item.created).fromNow()}
@@ -74,8 +73,6 @@ const Items = ({ list, filter }) => {
 										title={item.title}
 										subtitle={item.tags.map(tag => tag.title).join(", ")}
 									/>{" "}
-									{/* TODO: figure out how to render ALL tags.title if there are more than one.*/}
-									{/* TODO: comma-separate if multiple values */}
 									<CardText>{item.description}</CardText>
 									{item.borrower.id ? (
 										// if the item is lent out to someone, don't render a Borrow button
