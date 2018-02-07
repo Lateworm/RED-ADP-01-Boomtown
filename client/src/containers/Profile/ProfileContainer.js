@@ -17,7 +17,7 @@ class ProfileContainer extends Component {
 	static propTypes = {
 		data: PropTypes.object.isRequired
 	};
-} // end class ProfileContainer
+}
 
 // GraphQL query - the returned data becomes the 'user' in Profile.js
 const fetchItems = gql`
@@ -55,4 +55,4 @@ const fetchItems = gql`
 
 export default graphql(fetchItems, {
 	options: ({ match }) => ({ variables: { id: match.params.userid } })
-})(ProfileContainer); // TODO: modify fetchItems to also fetch user info
+})(ProfileContainer);

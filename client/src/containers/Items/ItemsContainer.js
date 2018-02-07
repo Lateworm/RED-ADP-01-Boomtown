@@ -17,10 +17,10 @@ class ItemsContainer extends Component {
 	}
 
 	static propTypes = {
-		filters: PropTypes.object.isRequired, // TODO: make sure isLoading is always defined
+		filters: PropTypes.object.isRequired,
 		data: PropTypes.object.isRequired // An array of object, each item is an object
 	};
-} // end class ItemsContainer
+}
 
 const fetchItems = gql`
 	query {
