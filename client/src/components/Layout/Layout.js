@@ -17,8 +17,7 @@ const Layout = ({ children, userLoading, authenticated }) =>
 				{authenticated && authenticated !== "LOADING_USER" && <HeaderBar />}
 			</div>
 			<div className="appContent">{children}</div>
-			<Footer />
-			{/* TODO: Hide the footer on the login route... */}
+			{authenticated && authenticated !== "LOADING_USER" && <Footer />}
 		</div>
 	);
 
