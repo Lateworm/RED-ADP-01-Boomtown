@@ -10,11 +10,12 @@ This project is coursework for RED Academy's app development program. Boomtown i
 
 * JavaScript / JSON
 * Node
+* Express
 * React
 * Material UI
 * Redux
 * Apollo / GraphQL
-* Express
+* PostgreSQL
 
 ## Installation
 
@@ -26,25 +27,21 @@ cd client && npm install
 
 ## Start-up
 
-From inside the `server` directory, start the JSON server:
+1: Serve the database of items by starting Postgres
 
-```bash
-json-server --watch db.json -p 4000
-```
-
-then in `server/graphql` start the GraphQL server:
+2: In `server/graphql` start the GraphQL server:
 
 ```bash
 npm start
 ```
 
-In the `client` directory, start the client:
+3: In the `client` directory, start the client:
 
 ```bash
 npm start
 ```
 
-If needed, access the GraphiQL UI at:
+4: If needed, access the GraphiQL UI at:
 
 ```
 http://localhost:3002/graphiql
